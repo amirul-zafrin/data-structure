@@ -100,3 +100,14 @@ class LinkedList:
             lst.append(curr.data)
             curr = curr.nxval
         print(lst)
+
+    def reverse(self):
+        prev = None
+        curr = self.head
+
+        while curr is not None:
+            nxt = curr.nxval
+            curr.nxval = prev
+            prev = curr
+            curr = nxt
+        self.head = prev
