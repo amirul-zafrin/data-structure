@@ -39,7 +39,7 @@ class LinkedList:
 
     def addAtPos(self, data, position:int):
         if position > self.size:
-            raise Exception(f"No value at position = {position}!")
+            raise Exception(f"Can't add value at position = {position}")
 
         elif position == 1:
             return addFirst(data)
@@ -59,6 +59,9 @@ class LinkedList:
         curr.nxval = node
 
     def removeFirst(self):
+        if self.head == None:
+            raise Exception(f"No value in the list")
+
         self.head = self.head.nxval
 
     def removeLast(self):
@@ -69,7 +72,10 @@ class LinkedList:
         curr.nxval = None
 
     def removeAt(self,position: int):
-        if position > self.size:
+        if self.head == None:
+            raise Exception(f"No value in the list")
+
+        elif position > self.size:
             raise Exception(f"No value at position = {position}!")
 
         elif position == 1:
