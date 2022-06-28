@@ -11,7 +11,6 @@ class LinkedList:
     def __len__(self):
         return self.size
 
-# TODO insert at beginning
     def addFirst(self, data):
         node = Node(data)
 
@@ -23,7 +22,6 @@ class LinkedList:
 
         self.size += 1
 
-# TODO insert at the end
     def addLast(self,data):
         node = Node(data)
 
@@ -39,8 +37,7 @@ class LinkedList:
         
         self.size += 1
 
-# TODO insert at any position
-    def addAtPos(self, data, position):
+    def addAtPos(self, data, position:int):
         if position > self.size:
             raise Exception(f"No value at position = {position}!")
 
@@ -51,9 +48,9 @@ class LinkedList:
             return addLast(data)
 
         idx = 1
-        curr = self.head.nxval
+        curr = self.head
 
-        while(position - 1  != idx):
+        while(position-1 != idx):
             curr = curr.nxval
             idx += 1
 
@@ -61,10 +58,39 @@ class LinkedList:
         node.nxval = curr.nxval
         curr.nxval = node
 
-# TODO Remove end
+    def removeFirst(self):
+        self.head = self.head.nxval
 
-# TODO Remove tail
+    def removeLast(self):
+        curr = self.head
+        while(curr.nxval.nxval != None):
+            curr = curr.nxval
 
-# TODO Remove any pos 
+        curr.nxval = None
 
-# TODO traverse
+    def removeAt(self,position: int):
+        if position > self.size:
+            raise Exception(f"No value at position = {position}!")
+
+        elif position == 1:
+            return removeFirst()
+        
+        elif position == self.size:
+            return removeLast()
+
+        idx = 1
+        curr = self.head
+
+        while(position-1 != idx):
+            curr = curr.nxval
+            idx += 1
+
+        curr.nxval = curr.nxval.nxval
+
+    def traverse(self):
+        curr = self.head
+        lst = []
+        while(curr != None):
+            lst.append(curr.data)
+            curr = curr.nxval
+        print(lst)
