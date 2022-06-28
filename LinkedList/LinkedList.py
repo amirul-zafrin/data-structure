@@ -14,7 +14,7 @@ class LinkedList:
     def addFirst(self, data):
         node = Node(data)
 
-        if self.head == None:
+        if self.head is None:
             self.head = node
         else:
             node.nxval = self.head
@@ -25,32 +25,27 @@ class LinkedList:
     def addLast(self,data):
         node = Node(data)
 
-        if self.head == None:
+        if self.head is None:
             self.head = node
 
         else:
             curr = self.head
-            while curr.nxval != None:
+            while curr.nxval is not None:
                 curr = curr.nxval
             
             curr.nxval = node
         
         self.size += 1
 
-    def addAtPos(self, data, position:int):
-        if position > self.size:
-            raise Exception(f"Can't add value at position = {position}")
 
-        elif position == 1:
-            return addFirst(data)
-        
-        elif position == self.size:
-            return addLast(data)
+    def addAtPos(self, data, position:int):
+        if position > self.size + 1:
+            raise Exception(f"Can't add value at position = {position}")
 
         idx = 1
         curr = self.head
 
-        while(position-1 != idx):
+        while position-1 != idx:
             curr = curr.nxval
             idx += 1
 
@@ -58,21 +53,25 @@ class LinkedList:
         node.nxval = curr.nxval
         curr.nxval = node
 
+        size += 1
+
     def removeFirst(self):
-        if self.head == None:
+        if self.head is None:
             raise Exception(f"No value in the list")
 
         self.head = self.head.nxval
+        self.size -= 1
 
     def removeLast(self):
         curr = self.head
-        while(curr.nxval.nxval != None):
+        while curr.nxval.nxval is not None:
             curr = curr.nxval
 
         curr.nxval = None
+        self.size -= 1
 
     def removeAt(self,position: int):
-        if self.head == None:
+        if self.head is None:
             raise Exception(f"No value in the list")
 
         elif position > self.size:
@@ -87,16 +86,17 @@ class LinkedList:
         idx = 1
         curr = self.head
 
-        while(position-1 != idx):
+        while position-1 != idx:
             curr = curr.nxval
             idx += 1
 
         curr.nxval = curr.nxval.nxval
+        self.size -= 1
 
     def traverse(self):
         curr = self.head
         lst = []
-        while(curr != None):
+        while curr is not None:
             lst.append(curr.data)
             curr = curr.nxval
         print(lst)
