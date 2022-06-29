@@ -127,3 +127,11 @@ class DoublyLinkedList:
      
         lst.append(self.head.data)
         print(f"List: {lst}")
+
+    def reverse(self):
+        curr = self.head
+        while curr is not None:
+            curr.nxval, curr.prval = curr.prval, curr.nxval
+            curr = curr.prval
+
+        self.head, self.tail = self.tail, self.head
