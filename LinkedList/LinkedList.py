@@ -1,3 +1,4 @@
+from typing import Type
 class Node:
     def __init__(self,data):
         self.data = data
@@ -111,3 +112,29 @@ class LinkedList:
             prev = curr
             curr = nxt
         self.head = prev
+
+    @classmethod
+    def merge(self, list1, list2):
+        newLL = LinkedList()
+        if list1 is None:
+            newLL = list2
+        elif list2 is None:
+            newLL = list1
+
+        else:
+            l1 = list1.head
+            l2 = list2.head
+            while l1 is not None and l2 is not None:
+                newLL.addLast(l1.data)
+                newLL.addLast(l2.data)
+                l1 = l1.nxval
+                l2 = l2.nxval
+            
+            while l1 is not None:
+                newLL.addLast(l1.data)
+                l1 = l1.nxval
+
+            while l2 is not None:
+                newLL.addLast(l2.data)
+                l2 = l2.nxval
+        return newLL
