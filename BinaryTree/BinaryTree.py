@@ -29,13 +29,3 @@ class BinaryTree:
             ls.append(root.data)
             ls = ls + self.inorderTraversal(root.right)
         return ls
-
-
-tr = BinaryTree(5)
-tr.insert(2)
-tr.insert(3)
-tr.insert(9)
-tr.insert(11)
-tr.insert(11)
-a = tr.inorderTraversal(tr)
-print(a)
