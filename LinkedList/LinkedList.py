@@ -120,6 +120,14 @@ class LinkedList:
             newLL.addLast(x)
         return newLL
 
+    def sum(self):
+        curr = self.head
+        total = 0
+        while curr is not None:
+            total += curr.data
+            curr = curr.nxval
+        return total
+
     @classmethod
     def merge(self, list1, list2):
         newLL = LinkedList()
