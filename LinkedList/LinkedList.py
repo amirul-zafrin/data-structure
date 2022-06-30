@@ -100,7 +100,7 @@ class LinkedList:
         while curr is not None:
             lst.append(curr.data)
             curr = curr.nxval
-        print(lst)
+        return lst
 
     def reverse(self):
         prev = None
@@ -112,6 +112,13 @@ class LinkedList:
             prev = curr
             curr = nxt
         self.head = prev
+
+    def sort(self):
+        lst = sorted(self.traverse())
+        newLL = LinkedList()
+        for x in lst:
+            newLL.addLast(x)
+        return newLL
 
     @classmethod
     def merge(self, list1, list2):
