@@ -56,6 +56,23 @@ class LinkedList:
 
         size += 1
 
+    def addSort(self,data):
+        node = Node(data)
+
+        if self.head is None:
+            self.head = node
+
+        else:
+            curr = self.head
+            while node.data >= node.data and curr.nxval is not None:
+                curr = curr.nxval
+            
+            node.nxval = curr.nxval
+            curr.nxval = node
+        
+        self.size += 1
+
+
     def removeFirst(self):
         if self.head is None:
             raise Exception(f"No value in the list")
