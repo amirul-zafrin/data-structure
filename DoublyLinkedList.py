@@ -66,6 +66,19 @@ class DoublyLinkedList:
             node.nxval.prval = node
             self.size += 1
 
+    def addSort(self, data):
+        node = DNode(data)
+
+        curr = self.head
+        while curr.nxval is not None and node.data >= curr.data:
+            curr = curr.nxval
+        
+        node.prval = curr.prval
+        node.nxval = curr
+        node.prval.nxval = node
+        node.nxval.prval = node
+        self.size += 1
+
     def removeHead(self):
         self.head = self.head.nxval
         self.head.prval = None
