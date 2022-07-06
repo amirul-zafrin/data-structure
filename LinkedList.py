@@ -145,7 +145,7 @@ class LinkedList:
             curr = curr.nxval
         return total
 
-    @classmethod
+    @staticmethod
     def merge(self, list1, list2):
         newLL = LinkedList()
         if list1 is None:
@@ -170,3 +170,15 @@ class LinkedList:
                 newLL.addLast(l2.data)
                 l2 = l2.nxval
         return newLL
+
+    @staticmethod
+    def circular(self):
+        curr = self.head
+        lst = []
+        while curr is not None:
+            if id(curr) not in lst:
+                lst.append(id(curr))
+                curr.nxval
+            else:
+                return True
+        return False
